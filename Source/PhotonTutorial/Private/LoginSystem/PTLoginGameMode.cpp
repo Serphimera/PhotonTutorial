@@ -3,6 +3,13 @@
 #include "PhotonTutorial.h"
 #include "PTLoginGameMode.h"
 
+APTLoginGameMode::APTLoginGameMode(const FObjectInitializer& ObjectInitializer)
+    :Super(ObjectInitializer)
+{
+    HUDClass = APTHUD::StaticClass();
+    PlayerControllerClass = APTPlayerController::StaticClass();
+}
+
 
 void APTLoginGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
 {
@@ -28,4 +35,11 @@ void APTLoginGameMode::BeginPlay()
             UE_LOG(PT, Error, TEXT("Startup map not correct: %s"), *World->GetMapName());
         }
     }
+
+    APlayerController* MyController = GetWorld()->GetFirstPlayerController();
+
+    MyController->bShowMouseCursor = true;
+    MyController->bEnableClickEvents = true;
+    MyController->bEnableMouseOverEvents = true;
+    MyController->SetIgnoreLookInput(true);
 }

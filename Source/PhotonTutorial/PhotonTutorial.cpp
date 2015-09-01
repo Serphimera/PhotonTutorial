@@ -1,9 +1,21 @@
 // Sebastian Kenter
 
 #include "PhotonTutorial.h"
+#include "PTMenuStyles.h"
 
 DEFINE_LOG_CATEGORY(PT);
 DEFINE_LOG_CATEGORY(PTNet);
 DEFINE_LOG_CATEGORY(PTLoading);
 
-IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, PhotonTutorial, "PhotonTutorial" );
+void FPhotonTutorialGameModule::StartupModule()
+{
+    FSlateStyleRegistry::UnRegisterSlateStyle(PTMenuStyles::GetStyleSetName());
+    PTMenuStyles::Initialize();
+}
+
+void FPhotonTutorialGameModule::ShutdownModule()
+{
+    PTMenuStyles::Shutdown();
+}
+
+IMPLEMENT_PRIMARY_GAME_MODULE(FPhotonTutorialGameModule, PhotonTutorial, "PhotonTutorial");

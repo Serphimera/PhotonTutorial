@@ -5,6 +5,8 @@
 #include "GameFramework/GameMode.h"
 #include "PTLoginController.h"
 #include "PTLoginHandler.h"
+#include "PTHUD.h"
+#include "PTPlayerController.h"
 #include "PTLoginGameMode.generated.h"
 
 /**
@@ -13,7 +15,7 @@
 UCLASS()
 class PHOTONTUTORIAL_API APTLoginGameMode : public AGameMode
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 	
 public:
 
